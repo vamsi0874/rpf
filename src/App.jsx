@@ -1,7 +1,7 @@
 import './App.css'
 
 
-import { Link, Outlet, Routes,Route } from 'react-router-dom'
+import { Link, Outlet, Routes,Route, useRoutes } from 'react-router-dom'
 import badge from "./logo/badge.png"
 import rpf from "./logo/rpf.png"
 import src from "./logo/scr.jpg"
@@ -9,6 +9,12 @@ import { Welcome } from './components/Welcome'
 
 
 function App() {
+ let element = useRoutes([
+  {
+    path : '/',
+    element : <Welcome/>
+  }
+ ])
   return (
    <>
     <div>
@@ -103,9 +109,10 @@ function App() {
           </aside>
          
           <main className="content">
-            <Routes>
-            <Route path='/' element= {<Welcome/>} />
-            </Routes>
+            {/* <Routes>
+              <Route path='/' element= {<Welcome/>} />
+            </Routes> */}
+            {element}
             <Outlet/>
          </main>
     </div>
